@@ -1,0 +1,13 @@
+spring:
+    datasource:
+        url: jdbc:h2:file:~/test
+        username: sa
+        password:
+
+    jpa:
+        hibernate:
+            ddlAuto: create-drop
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.H2Dialect
+        show-sql: false
