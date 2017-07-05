@@ -1,20 +1,26 @@
 package com.igorhara.example.ejb.entity;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
+/**
+ * Created by serafig on 05/07/2017.
+ */
 @Entity
-public class Notifier {
+public class Owner {
+
 
     @Id
     @GeneratedValue
     private Long id;
 
-    @Column
+    @Basic
     private String name;
 
+    @ElementCollection
+    private Set<String> addresses = new HashSet<>();
 
-    @ManyToOne
-    private Owner owner;
 
     public Long getId() {
         return id;
@@ -32,11 +38,11 @@ public class Notifier {
         this.name = name;
     }
 
-    public Owner getOwner() {
-        return owner;
+    public Set<String> getAddresses() {
+        return addresses;
     }
 
-    public void setOwner(Owner owner) {
-        this.owner = owner;
+    public void setAddresses(Set<String> addresses) {
+        this.addresses = addresses;
     }
 }

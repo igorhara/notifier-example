@@ -12,7 +12,7 @@ public class NotifierDTO implements DTO<Notifier> {
         super();
     }
 
-    private NotifierDTO(Notifier notifier) {
+    protected NotifierDTO(Notifier notifier) {
         this.notifierId = notifier.getId();
         this.name = notifier.getName();
     }

@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Component
 @Transactional
 public class NotifierFacade {
@@ -20,9 +23,16 @@ public class NotifierFacade {
 
     public DTO<Notifier> getNotifier(DTO<Notifier> dto, Long id){
         Notifier notifier = notifierServiceBean.getNotifier(id);
-        dto.populateDTO(notifier);
-        return dto;
+        return dto.populateDTO(notifier);
+
     }
+
+    public List<DTO<Notifier>> listNotifiers(DTO<Notifier> dto){
+        List<Notifier> notifiers = notifierServiceBean.listNotifiers();
+
+        return notifiers.stream().map(dto::populateDTO).collect(Collectors.toList());
+    }
+
 
     public DTO<Notifier> createNotifierWithName(DTO<Notifier> dto, String name){
         Notifier notifier = notifierServiceBean.createNotifierWithName(name);

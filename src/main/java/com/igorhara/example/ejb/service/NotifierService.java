@@ -6,6 +6,8 @@ import com.igorhara.example.ejb.exception.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class NotifierService {
 
@@ -31,5 +33,9 @@ public class NotifierService {
         Notifier notifier = new Notifier();
         notifier.setName(name);
         return notifierDAO.save(notifier);
+    }
+
+    public List<Notifier> listNotifiers(){
+        return notifierDAO.findAll();
     }
 }
